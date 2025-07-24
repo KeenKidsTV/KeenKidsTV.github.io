@@ -13,7 +13,7 @@
 
     /* Navigation Bar */
     nav.nav-bar {
-      background: linear-gradient(90deg, #ffd600, #fff176);
+      background-color: #ffeb3b; /* solid yellow */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -51,7 +51,7 @@
     }
 
     .nav-links a:hover {
-      background-color: #ffeb3b;
+      background-color: #7a730f; /* darker yellow */
       color: #ff5722;
       text-decoration: none;
     }
@@ -109,59 +109,14 @@
       <div class="nav-title">Keen Kids</div>
     </div>
     <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Shop</a>
-      <a href="#">Wiki</a>
-      <a href="#">Episodes</a>
+      <a href="index.html">Home</a>
+      <a href="episodes.html">Episodes</a>
+      <a href="shop.html">Shop</a>
+      <a href="wiki.html">Wiki</a>
+      <a href="about.html">About</a>
     </div>
   </nav>
 
-  <h1>Episodes</h1>
-
-  <!-- Season Dropdown -->
-  <div class="season-selector">
-    <select id="seasonDropdown" onchange="showSeason()">
-      <option value="season1">Season 1</option>
-      <option value="season2">Season 2</option>
-    </select>
-  </div>
-
-  <!-- Season 1 Episodes -->
-  <ul id="season1" class="episode-list">
-    <li><a href="/episodes/season1/milk-justice/index.html">Ep 1: Pencil Heist</a></li>
-    <li><a href="/episodes/season1/fraud-on-a-degree/index.html">Ep 2: Fraud on a Degree</a></li>
-  </ul>
-
-  <!-- Season 2 Episodes -->
-  <ul id="season2" class="episode-list" style="display: none;">
-    <li><a href="/episodes/milk-justice/index.html">Ep 1: Milk Justice</a></li>
-    <li><a href="/episodes/lunch-lab-leak/index.html">Ep 2: Lunch Lab Leak</a></li>
-  </ul>
-
-  <script>
-    function showSeason() {
-      const dropdown = document.getElementById("seasonDropdown");
-      const selectedSeason = dropdown.value;
-      localStorage.setItem("selectedSeason", selectedSeason);
-
-      const allSeasons = document.querySelectorAll(".episode-list");
-      allSeasons.forEach(list => {
-        list.style.display = "none";
-      });
-
-      const selectedList = document.getElementById(selectedSeason);
-      if (selectedList) {
-        selectedList.style.display = "block";
-      }
-    }
-
-    // On page load
-    window.onload = function () {
-      const savedSeason = localStorage.getItem("selectedSeason") || "season1";
-      document.getElementById("seasonDropdown").value = savedSeason;
-      showSeason();
-    };
-  </script>
-
-</body>
-</html>
+<body>
+<p>Welcome to the Keen Kids homepage.</p>
+</body

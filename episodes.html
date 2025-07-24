@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Keen Kids</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+      margin: 0;
+      background: #fff9f0;
+    }
+
+    /* Navigation Bar */
+    nav.nav-bar {
+      background-color: #ffeb3b; /* solid yellow */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+      border-bottom: 2px solid #fdd835;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 40px;
+      margin-right: 12px;
+    }
+
+    .nav-title {
+      font-weight: 800;
+      font-size: 24px;
+      color: #333;
+      text-shadow: 1px 1px #fffde7;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background-color: #7a730f; /* darker yellow */
+      color: #ff5722;
+      text-decoration: none;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff8800;
+      margin-top: 30px;
+      font-size: 2.2em;
+    }
+
+    .season-selector {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    li {
+      margin: 15px 0;
+      text-align: center;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #ff8800;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="nav-left">
+      <div class="nav-title">Keen Kids</div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="episodes.html">Episodes</a>
+      <a href="shop.html">Shop</a>
+      <a href="wiki.html">Wiki</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <h1>Episodes</h1>
+
+  <!-- Season Dropdown -->
+  <div class="season-selector">
+    <select id="seasonDropdown" onchange="showSeason()">
+      <option value="trailers">trailers</option>
+      <option value="season1">Season 1</option>
+      <option value="season2">Season 2</option>
+    </select>
+  </div>
+
+  <!-- Season 1 Episodes -->
+  <ul id="season1" class="episode-list">
+    <li><a href="/episodes/season1/milk-justice/index.html">Ep 1: Milk Justice</a></li>
+    <li><a href="/episodes/season1/fraud-on-a-degree/index.html">Ep 2: Fraud on a Degree</a></li>
+  </ul>
+
+  <!-- Season 2 Episodes -->
+  <ul id="season2" class="episode-list" style="display: none;">
+    <li><a href="/episodes/milk-justice/index.html">Ep 1: wip</a></li>
+    <li><a href="/episodes/lunch-lab-leak/index.html">Ep 2: wip</a></li>
+  </ul>
+
+  <script>
+    function showSeason() {
+      const dropdown = document.getElementById("seasonDropdown");
+      const selectedSeason = dropdown.value;
+      localStorage.setItem("selectedSeason", selectedSeason);
+
+      const allSeasons = document.querySelectorAll(".episode-list");
+      allSeasons.forEach(list => {
+        list.style.display = "none";
+      });
+
+      const selectedList = document.getElementById(selectedSeason);
+      if (selectedList) {
+        selectedList.style.display = "block";
+      }
+    }
+
+    // On page load
+    window.onload = function () {
+      const savedSeason = localStorage.getItem("selectedSeason") || "season1";
+      document.getElementById("seasonDropdown").value = savedSeason;
+      showSeason();
+    };
+  </script>
+
+</body>
+</html>
